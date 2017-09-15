@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @required
 - (void)tokenViewDidRequestDelete:(CLTokenView *)tokenView replaceWithText:(nullable NSString *)replacementText;
 - (void)tokenViewDidRequestSelection:(CLTokenView *)tokenView;
+- (void)tokenViewDidDoubleSelectToken:(CLToken *)token;
 
 @end
 
@@ -25,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CLTokenView : UIView <UIKeyInput>
 
 @property (weak, nonatomic, nullable) NSObject <CLTokenViewDelegate> *delegate;
+@property (nonatomic) CLToken *token;
 @property (assign, nonatomic) BOOL selected;
 @property (assign, nonatomic) BOOL hideUnselectedComma;
 

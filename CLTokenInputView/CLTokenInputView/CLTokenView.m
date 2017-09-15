@@ -60,6 +60,8 @@ static NSString *const UNSELECTED_LABEL_NO_COMMA_FORMAT = @"%@";
         [self addSubview:self.selectedLabel];
         self.selectedLabel.hidden = YES;
 
+        self.token = token;
+        
         self.displayText = token.displayText;
 
         self.hideUnselectedComma = NO;
@@ -124,6 +126,10 @@ static NSString *const UNSELECTED_LABEL_NO_COMMA_FORMAT = @"%@";
 
 -(void)handleTapGestureRecognizer:(id)sender
 {
+    if (self.selected) {
+        [self.delegate tokenViewDidDoubleSelectToken:self.token];
+    }
+    
     [self.delegate tokenViewDidRequestSelection:self];
 }
 
@@ -155,7 +161,7 @@ static NSString *const UNSELECTED_LABEL_NO_COMMA_FORMAT = @"%@";
             self.selectedLabel.alpha = 0.0;
             self.selectedLabel.hidden = NO;
         }
-        [UIView animateWithDuration:0.25 animations:^{
+        [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
             self.selectedBackgroundView.alpha = selectedAlpha;
             self.selectedLabel.alpha = selectedAlpha;
         } completion:^(BOOL finished) {

@@ -68,6 +68,10 @@ NS_ASSUME_NONNULL_BEGIN
  * frames to make sure the token view still fits.
  */
 - (void)tokenInputView:(CLTokenInputView *)view didChangeHeightTo:(CGFloat)height;
+/**
+ * Called when a selected token is tapped again.
+ */
+- (void)tokenInputView:(CLTokenInputView *)view didDoubleSelectToken:(CLToken *)token;
 
 @end
 

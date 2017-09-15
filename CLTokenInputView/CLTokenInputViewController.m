@@ -77,6 +77,10 @@
 
 #pragma mark - CLTokenInputViewDelegate
 
+-(void)tokenInputView:(CLTokenInputView *)view didDoubleSelectToken:(CLToken *)token {
+    NSLog(@"User double-selected %@", token.displayText);
+}
+
 - (void)tokenInputView:(CLTokenInputView *)view didChangeText:(NSString *)text
 {
     if ([text isEqualToString:@""]){
@@ -175,23 +179,21 @@
 
 - (void)onFieldInfoButtonTapped:(id)sender
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Field View Button"
-                                                        message:@"This view is optional and can be a UIButton, etc."
-                                                       delegate:nil
-                                              cancelButtonTitle:@"Okay"
-                                              otherButtonTitles:nil];
-    [alertView show];
+    UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"Field View Button"
+                                                                             message:@"This view is optional and can be a UIButton, etc."
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:nil]];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 
 - (void)onAccessoryContactAddButtonTapped:(id)sender
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Accessory View Button"
-                                                        message:@"This view is optional and can be a UIButton, etc."
-                                                       delegate:nil
-                                              cancelButtonTitle:@"Okay"
-                                              otherButtonTitles:nil];
-    [alertView show];
+    UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"Accessory View Button"
+                                                                             message:@"This view is optional and can be a UIButton, etc."
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:nil]];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 #pragma mark - Demo Buttons
