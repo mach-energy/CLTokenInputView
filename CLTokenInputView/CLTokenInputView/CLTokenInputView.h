@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "CLToken.h"
+#import "CLBackspaceDetectingTextField.h"
 
 #if __has_feature(objc_generics)
 #define CL_GENERIC_ARRAY(type) NSArray<type>
@@ -78,6 +79,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CLTokenInputView : UIView
 
 @property (weak, nonatomic, nullable) IBOutlet NSObject <CLTokenInputViewDelegate> *delegate;
+@property (strong, nonatomic) CLBackspaceDetectingTextField *textField;
 /** An optional view that shows up presumably on the first line */
 @property (strong, nonatomic, nullable) UIView *fieldView;
 /** Option text which can be displayed before the first line (e.g. "To:") */
